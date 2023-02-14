@@ -1,12 +1,14 @@
+//eden cohen 208499475, yarden horowitz 314621657
+
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-var indexRouter = require('./routes/about');
-var usersRouter = require('./routes/users');
-var database = require('./database')
+var aboutRouter = require('./routes/about');
+var addcostRouter = require('./routes/addcost');
+var reportRouter = require('./routes/report');
 var app = express();
 
 // view engine setup
@@ -19,8 +21,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/about', aboutRouter);
+app.use('/addcost', addcostRouter);
+app.use('/report', reportRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

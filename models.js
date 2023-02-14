@@ -1,3 +1,5 @@
+//eden cohen 208499475, yarden horowitz 314621657
+
 const mongoose = require("mongoose");
 const ValidCategories = ["food", "health", "housing", "sport", "education", "transportation", "other"];
 
@@ -25,7 +27,7 @@ const costSchema = new mongoose.Schema(
         },
         category: {
             type: String,
-            transform: (category) =>category.toLowerCase(),
+            transform: (category) => category.toLowerCase(),
             validate: (category) => ValidCategories.includes(category.toLowerCase()),
         },
         sum: {
